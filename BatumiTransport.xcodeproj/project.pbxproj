@@ -232,6 +232,7 @@
 				69FD9133298B37B1004DC3BC /* Frameworks */,
 				69FD9134298B37B1004DC3BC /* Resources */,
 				3AF5931A51BF255C726A5681 /* [CP] Copy Pods Resources */,
+				5B6F42EAEFB2C995757AA0AE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,6 +327,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BatumiTransport/Pods-BatumiTransport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B6F42EAEFB2C995757AA0AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BatumiTransport/Pods-BatumiTransport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BatumiTransport/Pods-BatumiTransport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BatumiTransport/Pods-BatumiTransport-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F78160146F56B96223965B78 /* [CP] Check Pods Manifest.lock */ = {

@@ -7,5 +7,5 @@ target 'BatumiTransport' do
 
   # Pods for BatumiTransport
   pod 'GoogleMaps'
-
+  pod 'SnapKit'
 end
