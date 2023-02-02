@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69ABF5CE298BDA60009DB012 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */; };
 		69FD913A298B37B1004DC3BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD9139298B37B1004DC3BC /* AppDelegate.swift */; };
 		69FD913C298B37B1004DC3BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD913B298B37B1004DC3BC /* SceneDelegate.swift */; };
 		69FD913E298B37B1004DC3BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD913D298B37B1004DC3BC /* MapViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		69FD9136298B37B1004DC3BC /* BatumiTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatumiTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FD9139298B37B1004DC3BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69FD913B298B37B1004DC3BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				69FD9139298B37B1004DC3BC /* AppDelegate.swift */,
 				69FD9181298BBF5E004DC3BC /* Constants.swift */,
 				69FD913B298B37B1004DC3BC /* SceneDelegate.swift */,
+				69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */,
 				69FD913F298B37B1004DC3BC /* Main.storyboard */,
 				69FD9142298B37B3004DC3BC /* Assets.xcassets */,
 				69FD9144298B37B3004DC3BC /* LaunchScreen.storyboard */,
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69ABF5CE298BDA60009DB012 /* Codable+Extensions.swift in Sources */,
 				69FD9182298BBF5E004DC3BC /* Constants.swift in Sources */,
 				69FD913E298B37B1004DC3BC /* MapViewController.swift in Sources */,
 				69FD913A298B37B1004DC3BC /* AppDelegate.swift in Sources */,

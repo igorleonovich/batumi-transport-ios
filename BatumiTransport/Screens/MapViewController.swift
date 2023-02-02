@@ -123,7 +123,7 @@ final class MapViewController: UIViewController {
     private func drawAllLiveRoutes() {
         if let url = Bundle.main.url(forResource: "all-bus-routes", withExtension: "json"),
            let data = try? Data(contentsOf: url) {
-            if let routes = try? JSONDecoder().decode([Route].self, from: data) {
+            if let routes = try? JSONDecoder().decode([SimpleBusRoute].self, from: data) {
                 routes.enumerated().forEach { index, route in
 //                    guard index == 0 else { return }
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) - 0.5) { [weak self] in
@@ -185,16 +185,4 @@ final class SessionDelegate: NSObject, URLSessionDelegate {
         
         completionHandler(.useCredential, nil)
     }
-}
-
-struct Route: Codable {
-    
-    let number: String
-    let id: String
-}
-
-
-struct Routes: Codable {
-    
-    let routes: [Route]
 }

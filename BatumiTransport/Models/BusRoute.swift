@@ -67,3 +67,8 @@ struct Bus: Codable {
     static let allRoutes = ["1", "1a", "2", "2a", "3", "4", "6", "7", "7a", "8", "9", "9a", "10", "10a", "11", "12", "12a", "13", "14", "15", "16"]
 }
 
+struct SimpleBusRoute: Codable {
+    
+    let number: String
+    let id: String
+}
