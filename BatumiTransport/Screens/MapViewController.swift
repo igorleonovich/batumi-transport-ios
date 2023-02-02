@@ -77,6 +77,12 @@ final class MapViewController: UIViewController {
             marker.title = bus.name
             marker.snippet = "Speed: \(bus.s) km/h\nid: \(bus.id)"
             marker.map = mapView
+//            if let latitude = busRoute.coordinates.last?.last, let longitude = busRoute.coordinates.last?.first {
+//                CATransaction.begin()
+//                CATransaction.setAnimationDuration(150)
+//                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//                CATransaction.commit()
+//            }
         }
         drawBusStops(busRoute.busStops)
     }
