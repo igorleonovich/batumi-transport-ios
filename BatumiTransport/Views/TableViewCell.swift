@@ -1,3 +1,10 @@
+//
+//  TableViewCell.swift
+//  BatumiTransport
+//
+//  Created by Igor Leonovich on 2.02.23.
+//
+
 import UIKit
 
 class TableViewCell: UITableViewCell {

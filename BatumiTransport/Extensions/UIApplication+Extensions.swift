@@ -1,3 +1,10 @@
+//
+//  UIApplication+Extensions.swift
+//  BatumiTransport
+//
+//  Created by Igor Leonovich on 2.02.23.
+//
+
 import UIKit
 
 extension UIApplication {
@@ -6,9 +13,9 @@ extension UIApplication {
         return UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
     }
     
-    static var rootViewController: RootViewController? {
-        return (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController as? RootViewController
-    }
+//    static var rootViewController: RootViewController? {
+//        return (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController as? RootViewController
+//    }
     
     static var isLeftToRight: Bool {
         return UIApplication.shared.userInterfaceLayoutDirection == .leftToRight

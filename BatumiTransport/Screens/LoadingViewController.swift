@@ -36,6 +36,6 @@ final class LoadingViewController: UIViewController {
     }
     
     private func finishLoading() {
-        UIApplication.rootViewController?.showMainNavigationController()
+//        UIApplication.rootViewController?.showMainNavigationController()
     }
 }
