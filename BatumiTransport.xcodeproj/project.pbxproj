@@ -10,6 +10,17 @@
 		69ABF5CE298BDA60009DB012 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */; };
 		69ABF5D1298BDCF4009DB012 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */; };
 		69F5CCF3298BF91D00091122 /* BusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCF2298BF91D00091122 /* BusListViewController.swift */; };
+		69F5CCF5298BFA8D00091122 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCF4298BFA8D00091122 /* RootViewController.swift */; };
+		69F5CCF7298BFAE500091122 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCF6298BFAE500091122 /* LoadingViewController.swift */; };
+		69F5CCF9298BFB4400091122 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCF8298BFB4400091122 /* UIApplication+Extensions.swift */; };
+		69F5CCFB298BFB7D00091122 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCFA298BFB7D00091122 /* UIViewController+Extensions.swift */; };
+		69F5CCFD298BFBD700091122 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCFC298BFBD700091122 /* String+Extensions.swift */; };
+		69F5CCFF298BFE4600091122 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CCFE298BFE4600091122 /* MainViewController.swift */; };
+		69F5CD01298BFE7400091122 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CD00298BFE7400091122 /* MainTabViewController.swift */; };
+		69F5CD03298BFF5300091122 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CD02298BFF5300091122 /* BlurView.swift */; };
+		69F5CD05298C014100091122 /* UIVisualEffectView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CD04298C014100091122 /* UIVisualEffectView+Extensions.swift */; };
+		69F5CD08298C071B00091122 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CD07298C071B00091122 /* DataManager.swift */; };
+		69F5CD0A298C0A1B00091122 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5CD09298C0A1B00091122 /* TableViewCell.swift */; };
 		69FD913A298B37B1004DC3BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD9139298B37B1004DC3BC /* AppDelegate.swift */; };
 		69FD913C298B37B1004DC3BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD913B298B37B1004DC3BC /* SceneDelegate.swift */; };
 		69FD913E298B37B1004DC3BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD913D298B37B1004DC3BC /* MapViewController.swift */; };
@@ -47,6 +58,17 @@
 		69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
 		69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		69F5CCF2298BF91D00091122 /* BusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListViewController.swift; sourceTree = "<group>"; };
+		69F5CCF4298BFA8D00091122 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		69F5CCF6298BFAE500091122 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		69F5CCF8298BFB4400091122 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		69F5CCFA298BFB7D00091122 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		69F5CCFC298BFBD700091122 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		69F5CCFE298BFE4600091122 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		69F5CD00298BFE7400091122 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		69F5CD02298BFF5300091122 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		69F5CD04298C014100091122 /* UIVisualEffectView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVisualEffectView+Extensions.swift"; sourceTree = "<group>"; };
+		69F5CD07298C071B00091122 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		69F5CD09298C0A1B00091122 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		69FD9136298B37B1004DC3BC /* BatumiTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatumiTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FD9139298B37B1004DC3BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69FD913B298B37B1004DC3BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */,
+				69F5CD02298BFF5300091122 /* BlurView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -115,9 +138,29 @@
 		69F5CCF1298BF8E900091122 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				69F5CCFA298BFB7D00091122 /* UIViewController+Extensions.swift */,
+				69F5CCF8298BFB4400091122 /* UIApplication+Extensions.swift */,
 				69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */,
+				69F5CCFC298BFBD700091122 /* String+Extensions.swift */,
+				69F5CD04298C014100091122 /* UIVisualEffectView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		69F5CD06298C071100091122 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				69F5CD07298C071B00091122 /* DataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		69F5CD0B298C0A1D00091122 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				69F5CD09298C0A1B00091122 /* TableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		69FD912D298B37B1004DC3BC = {
@@ -141,8 +184,10 @@
 		69FD9138298B37B1004DC3BC /* BatumiTransport */ = {
 			isa = PBXGroup;
 			children = (
+				69F5CD06298C071100091122 /* Managers */,
 				69FD917E298B46CA004DC3BC /* Screens */,
 				69FD9179298B4650004DC3BC /* Models */,
+				69F5CD0B298C0A1D00091122 /* Views */,
 				69ABF5CF298BDCE3009DB012 /* Utils */,
 				69F5CCF1298BF8E900091122 /* Extensions */,
 				69FD9178298B413A004DC3BC /* Resources */,
@@ -206,6 +251,10 @@
 			isa = PBXGroup;
 			children = (
 				69FD913D298B37B1004DC3BC /* MapViewController.swift */,
+				69F5CCFE298BFE4600091122 /* MainViewController.swift */,
+				69F5CD00298BFE7400091122 /* MainTabViewController.swift */,
+				69F5CCF6298BFAE500091122 /* LoadingViewController.swift */,
+				69F5CCF4298BFA8D00091122 /* RootViewController.swift */,
 				69F5CCF2298BF91D00091122 /* BusListViewController.swift */,
 			);
 			path = Screens;
@@ -375,13 +424,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F5CCF9298BFB4400091122 /* UIApplication+Extensions.swift in Sources */,
+				69F5CCFD298BFBD700091122 /* String+Extensions.swift in Sources */,
 				69ABF5CE298BDA60009DB012 /* Codable+Extensions.swift in Sources */,
 				69FD9182298BBF5E004DC3BC /* Constants.swift in Sources */,
+				69F5CD0A298C0A1B00091122 /* TableViewCell.swift in Sources */,
+				69F5CCF5298BFA8D00091122 /* RootViewController.swift in Sources */,
+				69F5CD01298BFE7400091122 /* MainTabViewController.swift in Sources */,
+				69F5CCFB298BFB7D00091122 /* UIViewController+Extensions.swift in Sources */,
+				69F5CD08298C071B00091122 /* DataManager.swift in Sources */,
 				69FD913E298B37B1004DC3BC /* MapViewController.swift in Sources */,
+				69F5CCFF298BFE4600091122 /* MainViewController.swift in Sources */,
+				69F5CD03298BFF5300091122 /* BlurView.swift in Sources */,
 				69F5CCF3298BF91D00091122 /* BusListViewController.swift in Sources */,
 				69FD913A298B37B1004DC3BC /* AppDelegate.swift in Sources */,
 				69FD917B298B4659004DC3BC /* BusRoute.swift in Sources */,
+				69F5CCF7298BFAE500091122 /* LoadingViewController.swift in Sources */,
 				69FD913C298B37B1004DC3BC /* SceneDelegate.swift in Sources */,
+				69F5CD05298C014100091122 /* UIVisualEffectView+Extensions.swift in Sources */,
 				69ABF5D1298BDCF4009DB012 /* SessionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,7 +595,6 @@
 				INFOPLIST_FILE = BatumiTransport/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -564,7 +623,6 @@
 				INFOPLIST_FILE = BatumiTransport/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

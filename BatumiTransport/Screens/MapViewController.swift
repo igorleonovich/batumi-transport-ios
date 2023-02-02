@@ -8,7 +8,7 @@
 import GoogleMaps
 import UIKit
 
-final class MapViewController: UIViewController {
+class MapViewController: MainTabViewController {
     
     private var routeDataTask: URLSessionTask?
     private lazy var sessionConfiguration: URLSessionConfiguration = {
@@ -27,6 +27,14 @@ final class MapViewController: UIViewController {
             view.addSubview(mapView)
         }
     }
+    
+//    init() {
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,20 +139,15 @@ final class MapViewController: UIViewController {
     // MARK: - Live
     
     private func drawAllLiveRoutes() {
-        if let url = Bundle.main.url(forResource: "all-bus-routes", withExtension: "json"),
-           let data = try? Data(contentsOf: url) {
-            if let routes = try? JSONDecoder().decode([SimpleBusRoute].self, from: data) {
-                routes.enumerated().forEach { index, route in
+        DataManager.shared.simpleBusRoutes.enumerated().forEach { index, route in
 //                    guard index == 0 else { return }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) - 0.5) { [weak self] in
-                        self?.getLiveBusRoute(with: route.id) { [weak self] busRoute, error in
-                            if var busRoute = busRoute {
-                                busRoute.routeId = route.id
-                                self?.drawRoute(from: busRoute)
-                            } else if let error = error {
-                                print(error)
-                            }
-                        }
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) - 0.5) { [weak self] in
+                self?.getLiveBusRoute(with: route.id) { [weak self] busRoute, error in
+                    if var busRoute = busRoute {
+                        busRoute.routeId = route.id
+                        self?.drawRoute(from: busRoute)
+                    } else if let error = error {
+                        print(error)
                     }
                 }
             }
