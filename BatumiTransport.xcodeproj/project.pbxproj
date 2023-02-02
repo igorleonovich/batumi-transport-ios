@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69ABF5CE298BDA60009DB012 /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */; };
+		69ABF5D1298BDCF4009DB012 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */; };
 		69FD913A298B37B1004DC3BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD9139298B37B1004DC3BC /* AppDelegate.swift */; };
 		69FD913C298B37B1004DC3BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD913B298B37B1004DC3BC /* SceneDelegate.swift */; };
 		69FD913E298B37B1004DC3BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD913D298B37B1004DC3BC /* MapViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		69ABF5CD298BDA60009DB012 /* Codable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
+		69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		69FD9136298B37B1004DC3BC /* BatumiTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatumiTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FD9139298B37B1004DC3BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69FD913B298B37B1004DC3BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		69ABF5CF298BDCE3009DB012 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		69FD912D298B37B1004DC3BC = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 			children = (
 				69FD917E298B46CA004DC3BC /* Screens */,
 				69FD9179298B4650004DC3BC /* Models */,
+				69ABF5CF298BDCE3009DB012 /* Utils */,
 				69FD9178298B413A004DC3BC /* Resources */,
 				69FD9139298B37B1004DC3BC /* AppDelegate.swift */,
 				69FD9181298BBF5E004DC3BC /* Constants.swift */,
@@ -136,9 +147,10 @@
 			path = BatumiTransport;
 			sourceTree = "<group>";
 		};
-		69FD914D298B4138004DC3BC /* GPS */ = {
+		69FD914D298B4138004DC3BC /* BusRoutes */ = {
 			isa = PBXGroup;
 			children = (
+				69FD917F298BBD92004DC3BC /* all-bus-routes.json */,
 				69FD914E298B4138004DC3BC /* 1a.json */,
 				69FD914F298B4138004DC3BC /* 16.json */,
 				69FD9150298B4138004DC3BC /* 6.json */,
@@ -161,14 +173,13 @@
 				69FD9161298B4138004DC3BC /* 15.json */,
 				69FD9162298B4138004DC3BC /* 9.json */,
 			);
-			path = GPS;
+			path = BusRoutes;
 			sourceTree = "<group>";
 		};
 		69FD9178298B413A004DC3BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				69FD914D298B4138004DC3BC /* GPS */,
-				69FD917F298BBD92004DC3BC /* all-bus-routes.json */,
+				69FD914D298B4138004DC3BC /* BusRoutes */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -341,6 +352,7 @@
 				69FD913A298B37B1004DC3BC /* AppDelegate.swift in Sources */,
 				69FD917B298B4659004DC3BC /* BusRoute.swift in Sources */,
 				69FD913C298B37B1004DC3BC /* SceneDelegate.swift in Sources */,
+				69ABF5D1298BDCF4009DB012 /* SessionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

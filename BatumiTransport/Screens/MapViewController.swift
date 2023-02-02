@@ -35,8 +35,8 @@ final class MapViewController: UIViewController {
     
     private func setupUI() {
 //        drawRoute(routeName: BusRoutes.list.first ?? "")
-//        drawRoute(routeName: "2")
-        drawAllRoutes()
+        drawRoute(routeName: "10")
+//        drawAllRoutes()
 //        drawAllBusStops()
 //        drawAllLiveRoutes()
     }
@@ -97,7 +97,11 @@ final class MapViewController: UIViewController {
                 marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 //                marker.icon = UIImage(named: "MapPin")
                 marker.title = busStop.name
-//                marker.snippet = busStop.stop_id
+                var description = ""
+                busStop.output.forEach { output in
+                    description += output.value
+                }
+                marker.snippet = description
                 marker.map = mapView
             }
         }
@@ -127,7 +131,7 @@ final class MapViewController: UIViewController {
                 routes.enumerated().forEach { index, route in
 //                    guard index == 0 else { return }
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) - 0.5) { [weak self] in
-                        self?.getRoute(with: route.id) { [weak self] busRoute, error in
+                        self?.getLiveBusRoute(with: route.id) { [weak self] busRoute, error in
                             if var busRoute = busRoute {
                                 busRoute.routeId = route.id
                                 self?.drawRoute(from: busRoute)
@@ -143,7 +147,7 @@ final class MapViewController: UIViewController {
     
     // MARK: Network
     
-    func getRoute(with routeId: String, completion: @escaping (BusRoute?, Swift.Error?) -> Void) {
+    func getLiveBusRoute(with routeId: String, completion: @escaping (BusRoute?, Swift.Error?) -> Void) {
         routeDataTask?.cancel()
         
         let sessionDelegate = SessionDelegate()
@@ -176,13 +180,5 @@ final class MapViewController: UIViewController {
             }
             routeDataTask?.resume()
         }
-    }
-}
-
-final class SessionDelegate: NSObject, URLSessionDelegate {
-    
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        
-        completionHandler(.useCredential, nil)
     }
 }

@@ -33,7 +33,7 @@ struct BusStop: Codable {
     
     let location: [Double]
     let name: String
-    let output: BusStopOutput
+    let output: [String: String]
     let stop_id: String
 }
 
@@ -49,10 +49,6 @@ extension BusStop: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(stop_id)
     }
-}
-
-struct BusStopOutput: Codable {
-    
 }
 
 struct Bus: Codable {
