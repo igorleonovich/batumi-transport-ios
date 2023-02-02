@@ -18,7 +18,7 @@ final class MapViewController: UIViewController {
     }
     
     private func setupUI() {
-        if let url = Bundle.main.url(forResource: "13", withExtension: "json"),
+        if let url = Bundle.main.url(forResource: "1", withExtension: "json"),
            let data = try? Data(contentsOf: url) {
             if let gps = try? JSONDecoder().decode(GPS.self, from: data) {
                 drawRoute(from: gps.coordinates)
@@ -30,7 +30,7 @@ final class MapViewController: UIViewController {
     private func drawRoute(from coordinates: [[Double]]) {
         let path = GMSMutablePath()
         coordinates.enumerated().forEach { index, point in
-            if let latitude = point.first, let longitude = point.last {
+            if let latitude = point.last, let longitude = point.first {
                 if index == 0 {
                     let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 14)
                     mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
