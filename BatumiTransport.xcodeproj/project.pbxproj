@@ -130,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				69ABF5D0298BDCF4009DB012 /* SessionDelegate.swift */,
-				69F5CD02298BFF5300091122 /* BlurView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -159,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				69F5CD09298C0A1B00091122 /* TableViewCell.swift */,
+				69F5CD02298BFF5300091122 /* BlurView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,11 +250,11 @@
 		69FD917E298B46CA004DC3BC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				69FD913D298B37B1004DC3BC /* MapViewController.swift */,
+				69F5CCF4298BFA8D00091122 /* RootViewController.swift */,
+				69F5CCF6298BFAE500091122 /* LoadingViewController.swift */,
 				69F5CCFE298BFE4600091122 /* MainViewController.swift */,
 				69F5CD00298BFE7400091122 /* MainTabViewController.swift */,
-				69F5CCF6298BFAE500091122 /* LoadingViewController.swift */,
-				69F5CCF4298BFA8D00091122 /* RootViewController.swift */,
+				69FD913D298B37B1004DC3BC /* MapViewController.swift */,
 				69F5CCF2298BF91D00091122 /* BusListViewController.swift */,
 			);
 			path = Screens;

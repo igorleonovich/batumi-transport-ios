@@ -38,21 +38,24 @@ class MapViewController: MainTabViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataManager.shared.setup { [weak self] in
+            
+        }
         setupUI()
     }
     
     private func setupUI() {
 //        drawRoute(routeName: BusRoutes.list.first ?? "")
-        drawRoute(routeName: "10")
+//        drawRoute(routeNumber: "10")
 //        drawAllRoutes()
 //        drawAllBusStops()
-//        drawAllLiveRoutes()
+        drawAllLiveRoutes()
     }
     
     // MARK: Map Drawing
     
-    private func drawRoute(routeName: String) {
-        if let url = Bundle.main.url(forResource: routeName, withExtension: "json"),
+    private func drawRoute(routeNumber: String) {
+        if let url = Bundle.main.url(forResource: routeNumber, withExtension: "json"),
            let data = try? Data(contentsOf: url) {
             if let busRoute = try? JSONDecoder().decode(BusRoute.self, from: data) {
                 drawRoute(from: busRoute)
@@ -96,8 +99,8 @@ class MapViewController: MainTabViewController {
     }
     
     private func drawAllRoutes() {
-        Bus.allRoutes.forEach { busRoute in
-            drawRoute(routeName: busRoute)
+        DataManager.shared.simpleBusRoutes.forEach { busRoute in
+            drawRoute(routeNumber: busRoute.number)
         }
     }
     
@@ -123,8 +126,8 @@ class MapViewController: MainTabViewController {
     
     private func drawAllBusStops() {
         var busStops = Set<BusStop>()
-        Bus.allRoutes.forEach { busRoute in
-            if let url = Bundle.main.url(forResource: busRoute, withExtension: "json"),
+        DataManager.shared.simpleBusRoutes.forEach { busRoute in
+            if let url = Bundle.main.url(forResource: busRoute.number, withExtension: "json"),
                let data = try? Data(contentsOf: url) {
                 if let busRoute = try? JSONDecoder().decode(BusRoute.self, from: data) {
                     busRoute.busStops.forEach { busStop in

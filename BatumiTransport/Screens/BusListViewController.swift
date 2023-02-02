@@ -19,9 +19,7 @@ final class BusListViewController: MainTabViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataManager.shared.setup { [weak self] in
-            self?.busRoutes = DataManager.shared.simpleBusRoutes
-        }
+        busRoutes = DataManager.shared.simpleBusRoutes
         setupUI()
     }
     
