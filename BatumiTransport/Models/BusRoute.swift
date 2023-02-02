@@ -1,5 +1,5 @@
 //
-//  GPS.swift
+//  BusRoute.swift
 //  BatumiTransport
 //
 //  Created by Igor Leonovich on 2.02.23.
@@ -7,11 +7,26 @@
 
 import Foundation
 
-struct GPS: Codable {
+struct BusRoute: Codable {
     
+    var routeId: String!
     let coordinates: [[Double]]
     let busStops: [BusStop]
     let buses: [Bus]?
+}
+
+extension BusRoute: Equatable {
+    
+    static func == (lhs: BusRoute, rhs: BusRoute) -> Bool {
+        return lhs.routeId == rhs.routeId
+    }
+}
+
+extension BusRoute: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(routeId)
+    }
 }
 
 struct BusStop: Codable {
