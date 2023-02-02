@@ -26,8 +26,8 @@ final class MapViewController: UIViewController {
                     if let latitude = point.first, let longitude = point.last {
                         if index == 0 {
                             let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 14)
-                            mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
-                            self.view.addSubview(mapView)
+                            mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
+                            view.addSubview(mapView)
 
                             let marker = GMSMarker()
                             marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

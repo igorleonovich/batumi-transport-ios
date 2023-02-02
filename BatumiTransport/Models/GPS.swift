@@ -11,7 +11,7 @@ struct GPS: Codable {
     
     let coordinates: [[Double]]
     let busStops: [BusStop]
-    let buses: [Bus]
+    let buses: [Bus]?
 }
 
 struct BusStop: Codable {
