@@ -49,7 +49,7 @@ class MapViewController: MainTabViewController {
 //        drawRoute(routeName: BusRoutes.list.first ?? "")
 //        drawRoute(routeNumber: "10")
 //        drawAllRoutes(isWithBusStops: false)
-        drawAllRoutes(isWithBusStops: true)
+        drawAllRoutes(isWithBusStops: false)
 //        drawAllBusStops()
 //        drawAllLiveRoutes()
     }
@@ -97,7 +97,7 @@ class MapViewController: MainTabViewController {
                     marker.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
                     marker.icon = UIImage(named: "Arrow")
                     marker.title = bus.name
-                    marker.snippet = "Speed: \(bus.s) km/h\nid: \(bus.id)"
+//                    marker.snippet = "Speed: \(bus.s) km/h"
                     marker.map = mapView
                     markers[bus.id] = marker
                 }
@@ -172,7 +172,7 @@ class MapViewController: MainTabViewController {
             self.getLiveBusRoute(with: routeId) { [weak self] busRoute, error in
                 if var busRoute = busRoute {
                     busRoute.routeId = routeId
-                    self?.drawRoute(from: busRoute, isWithBusStops: false)
+                    self?.drawRoute(from: busRoute, isWithBusStops: true)
                 } else if let error = error {
                     print(error)
                 }
