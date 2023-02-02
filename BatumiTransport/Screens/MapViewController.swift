@@ -8,11 +8,6 @@
 import GoogleMaps
 import UIKit
 
-struct BusRoutes {
-    
-    static let list = ["1", "1a", "2", "2a", "3", "4", "6", "7", "7a", "8", "9", "9a", "10", "10a", "11", "12", "12a", "13", "14", "15", "16"]
-}
-
 final class MapViewController: UIViewController {
 
     private var mapView: GMSMapView!
@@ -32,24 +27,24 @@ final class MapViewController: UIViewController {
     
     private func setupUI() {
 //        drawRoute(routeName: BusRoutes.list.first ?? "")
-//        drawRoute(routeName: "1")
-        drawAllRoutes()
-        drawAllBusStops()
+        drawRoute(routeName: "10")
+//        drawAllRoutes()
+//        drawAllBusStops()
     }
     
     private func drawRoute(routeName: String) {
         if let url = Bundle.main.url(forResource: routeName, withExtension: "json"),
            let data = try? Data(contentsOf: url) {
             if let gps = try? JSONDecoder().decode(GPS.self, from: data) {
-                drawRoute(from: gps.coordinates)
-//                drawBusStops(gps.busStops)
+                drawRoute(from: gps)
+                drawBusStops(gps.busStops)
             }
         }
     }
     
-    private func drawRoute(from coordinates: [[Double]]) {
+    private func drawRoute(from gps: GPS) {
         let path = GMSMutablePath()
-        coordinates.enumerated().forEach { index, point in
+        gps.coordinates.enumerated().forEach { index, point in
             if let latitude = point.last, let longitude = point.first {
                 if initialCoordinates == nil, index == 0 {
                     initialCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -62,10 +57,21 @@ final class MapViewController: UIViewController {
         polygon.strokeColor = .black
         polygon.strokeWidth = 2
         polygon.map = mapView
+        
+        gps.buses?.forEach { bus in
+            let marker = GMSMarker()
+            marker.icon = UIImage(named: "Arrow")
+            marker.rotation = CLLocationDegrees(bus.c)
+            marker.zIndex = 1000
+            marker.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
+            marker.title = bus.name
+            marker.snippet = "Speed: \(bus.s) km/h"
+            marker.map = mapView
+        }
     }
     
     private func drawAllRoutes() {
-        BusRoutes.list.forEach { busRoute in
+        Bus.allRoutes.forEach { busRoute in
             drawRoute(routeName: busRoute)
         }
     }
@@ -76,7 +82,7 @@ final class MapViewController: UIViewController {
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude: latitide, longitude: longitude)
                 marker.title = busStop.name
-                marker.snippet = busStop.stop_id
+//                marker.snippet = busStop.stop_id
                 marker.map = mapView
             }
         }
@@ -84,7 +90,7 @@ final class MapViewController: UIViewController {
     
     private func drawAllBusStops() {
         var busStops = Set<BusStop>()
-        BusRoutes.list.forEach { busRoute in
+        Bus.allRoutes.forEach { busRoute in
             if let url = Bundle.main.url(forResource: busRoute, withExtension: "json"),
                let data = try? Data(contentsOf: url) {
                 if let gps = try? JSONDecoder().decode(GPS.self, from: data) {
