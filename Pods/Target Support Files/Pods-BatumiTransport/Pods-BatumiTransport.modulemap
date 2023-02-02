@@ -1,0 +1,6 @@
+framework module Pods_BatumiTransport {
+  umbrella header "Pods-BatumiTransport-umbrella.h"
+
+  export *
+  module * { export * }
+}
