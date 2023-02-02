@@ -25,6 +25,7 @@ class MapViewController: MainTabViewController {
             guard let initialCoordinates = initialCoordinates else { return }
             let camera = GMSCameraPosition.camera(withLatitude: initialCoordinates.latitude, longitude: initialCoordinates.longitude, zoom: 14)
             mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
+            mapView.delegate = self
             view.addSubview(mapView)
         }
     }
@@ -36,6 +37,7 @@ class MapViewController: MainTabViewController {
             }
         }
     }
+    private var liveRouteTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,12 +84,13 @@ class MapViewController: MainTabViewController {
         polygon.map = mapView
         
         if let buses = busRoute.buses {
-            var updatedIds = Set<String>()
+//            var updatedIds = Set<String>()
             buses.forEach { bus in
                 if let markerObject = markers.first(where: { $0.key == bus.id }) {
                     CATransaction.begin()
                     CATransaction.setAnimationDuration(5)
                     markerObject.value.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
+                    mapView.animate(toLocation: markerObject.value.position)
 //                    updatedIds.insert(bus.id)
                     CATransaction.commit()
                 } else {
@@ -167,7 +170,8 @@ class MapViewController: MainTabViewController {
     }
     
     func drawLiveRoute(routeId: String) {
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] timer in
+        liveRouteTimer?.invalidate()
+        liveRouteTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] timer in
             guard let self = self else { return }
             self.getLiveBusRoute(with: routeId) { [weak self] busRoute, error in
                 if var busRoute = busRoute {
@@ -177,10 +181,14 @@ class MapViewController: MainTabViewController {
                     print(error)
                 }
             }
+            if let selectedMarker = self.mapView.selectedMarker,
+               let marker = self.markers.first(where: {$0.value == selectedMarker}) {
+                self.mapView.animate(toLocation: marker.value.position)
+            }
         }
-        timer.fire()
+        liveRouteTimer?.fire()
     }
-    
+
     // MARK: Network
     
     func getLiveBusRoute(with routeId: String, completion: @escaping (BusRoute?, Swift.Error?) -> Void) {
@@ -216,5 +224,17 @@ class MapViewController: MainTabViewController {
             }
             routeDataTask?.resume()
         }
+    }
+}
+
+extension MapViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        mapView.selectedMarker = marker
+        let point = mapView.projection.point(for: marker.position)
+        let camera = mapView.projection.coordinate(for: point)
+        let position = GMSCameraUpdate.setTarget(camera)
+        mapView.animate(with: position)
+        return true
     }
 }
