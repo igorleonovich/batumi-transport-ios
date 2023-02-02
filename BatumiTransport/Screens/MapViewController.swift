@@ -90,7 +90,9 @@ class MapViewController: MainTabViewController {
                     CATransaction.begin()
                     CATransaction.setAnimationDuration(5)
                     markerObject.value.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
-                    mapView.animate(toLocation: markerObject.value.position)
+                    if let selectedMarker = mapView.selectedMarker, selectedMarker == markers[bus.id] {
+                        mapView.animate(toLocation: markerObject.value.position)
+                    }
 //                    updatedIds.insert(bus.id)
                     CATransaction.commit()
                 } else {
@@ -105,11 +107,6 @@ class MapViewController: MainTabViewController {
                     markers[bus.id] = marker
                 }
             }
-//            markers.forEach { id, marker in
-//                if !updatedIds.contains(id) {
-//                    marker.map = nil
-//                }
-//            }
         }
         
         if isWithBusStops {
@@ -181,10 +178,10 @@ class MapViewController: MainTabViewController {
                     print(error)
                 }
             }
-            if let selectedMarker = self.mapView.selectedMarker,
-               let marker = self.markers.first(where: {$0.value == selectedMarker}) {
-                self.mapView.animate(toLocation: marker.value.position)
-            }
+//            if let selectedMarker = self.mapView.selectedMarker,
+//               let marker = self.markers.first(where: {$0.value == selectedMarker}) {
+//                self.mapView.animate(toLocation: marker.value.position)
+//            }
         }
         liveRouteTimer?.fire()
     }
