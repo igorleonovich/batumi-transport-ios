@@ -10,6 +10,7 @@ import UIKit
 final class MainViewController: UIViewController {
     
     private var viewControllers = [MainTabViewController]()
+    var mapViewController: MapViewController!
     private let bottomPanel = BlurView()
     static let bottomPanelHeight: CGFloat = 44
     private var mapStackView: InnerStackView!
@@ -40,15 +41,16 @@ final class MainViewController: UIViewController {
     
     // MARK: - Setup
     
-    // TODO: Refector to generix
+    // TODO: Refector to generics
     private func setupMapViewController() {
-        let mapViewController = MapViewController()
+        mapViewController = MapViewController()
         viewControllers.append(mapViewController)
         add(child: mapViewController)
     }
     
     private func setupBusListViewController() {
         let busListViewController = BusListViewController()
+        busListViewController.mainViewController = self
         viewControllers.append(busListViewController)
         busListViewController.view.alpha = 0
         add(child: busListViewController)
@@ -93,7 +95,7 @@ final class MainViewController: UIViewController {
     
     // MARK: - Actions: Bottom Panel
     
-    private func onMap() {
+    func onMap() {
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         viewControllers.forEach { viewController in
             if viewController.isKind(of: MapViewController.self) {

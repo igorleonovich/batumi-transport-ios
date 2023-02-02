@@ -9,6 +9,7 @@ import UIKit
 
 final class BusListViewController: MainTabViewController {
     
+    weak var mainViewController: MainViewController!
     var busRoutes = [SimpleBusRoute]()
     private var tableView: UITableView!
     
@@ -46,7 +47,9 @@ final class BusListViewController: MainTabViewController {
 extension BusListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        busRoutes[indexPath.row].id
+        mainViewController.mapViewController.mapView.clear()
+        mainViewController.mapViewController.drawLiveRoute(routeId: busRoutes[indexPath.row].id)
+        mainViewController.onMap()
     }
 }
 

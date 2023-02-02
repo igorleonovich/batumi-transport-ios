@@ -17,24 +17,25 @@ class MapViewController: MainTabViewController {
         return config
     }()
     private var liveRoutes = Set<BusRoute>()
+    private var markers = [String: GMSMarker]()
 
-    private var mapView: GMSMapView!
+    var mapView: GMSMapView!
     private var initialCoordinates: CLLocationCoordinate2D? {
         didSet {
             guard let initialCoordinates = initialCoordinates else { return }
-            let camera = GMSCameraPosition.camera(withLatitude: initialCoordinates.latitude, longitude: initialCoordinates.longitude, zoom: 13)
+            let camera = GMSCameraPosition.camera(withLatitude: initialCoordinates.latitude, longitude: initialCoordinates.longitude, zoom: 14)
             mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
             view.addSubview(mapView)
         }
     }
-    
-//    init() {
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    var currentRouteNumber: String? {
+        didSet {
+            if let currentRouteNumber = currentRouteNumber {
+                mapView.clear()
+                drawRoute(routeNumber: currentRouteNumber, isWithBusStops: true)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,23 +48,24 @@ class MapViewController: MainTabViewController {
     private func setupUI() {
 //        drawRoute(routeName: BusRoutes.list.first ?? "")
 //        drawRoute(routeNumber: "10")
-//        drawAllRoutes()
+//        drawAllRoutes(isWithBusStops: false)
+        drawAllRoutes(isWithBusStops: true)
 //        drawAllBusStops()
-        drawAllLiveRoutes()
+//        drawAllLiveRoutes()
     }
     
     // MARK: Map Drawing
     
-    private func drawRoute(routeNumber: String) {
+    private func drawRoute(routeNumber: String, isWithBusStops: Bool) {
         if let url = Bundle.main.url(forResource: routeNumber, withExtension: "json"),
            let data = try? Data(contentsOf: url) {
             if let busRoute = try? JSONDecoder().decode(BusRoute.self, from: data) {
-                drawRoute(from: busRoute)
+                drawRoute(from: busRoute, isWithBusStops: isWithBusStops)
             }
         }
     }
     
-    private func drawRoute(from busRoute: BusRoute) {
+    private func drawRoute(from busRoute: BusRoute, isWithBusStops: Bool) {
         let path = GMSMutablePath()
         busRoute.coordinates.enumerated().forEach { index, point in
             if let latitude = point.last, let longitude = point.first {
@@ -76,31 +78,45 @@ class MapViewController: MainTabViewController {
         let polygon = GMSPolygon(path: path)
         polygon.fillColor = .clear
         polygon.strokeColor = .systemBlue
-        polygon.strokeWidth = 3
+        polygon.strokeWidth = 2
         polygon.map = mapView
         
-        busRoute.buses?.forEach { bus in
-            let marker = GMSMarker()
-            marker.rotation = CLLocationDegrees(bus.c)
-            marker.zIndex = 1000
-            marker.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
-            marker.icon = UIImage(named: "Arrow")
-            marker.title = bus.name
-            marker.snippet = "Speed: \(bus.s) km/h\nid: \(bus.id)"
-            marker.map = mapView
-//            if let latitude = busRoute.coordinates.last?.last, let longitude = busRoute.coordinates.last?.first {
-//                CATransaction.begin()
-//                CATransaction.setAnimationDuration(150)
-//                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-//                CATransaction.commit()
+        if let buses = busRoute.buses {
+            var updatedIds = Set<String>()
+            buses.forEach { bus in
+                if let markerObject = markers.first(where: { $0.key == bus.id }) {
+                    CATransaction.begin()
+                    CATransaction.setAnimationDuration(5)
+                    markerObject.value.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
+//                    updatedIds.insert(bus.id)
+                    CATransaction.commit()
+                } else {
+                    let marker = GMSMarker()
+                    marker.rotation = CLLocationDegrees(bus.c)
+                    marker.zIndex = 1000
+                    marker.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
+                    marker.icon = UIImage(named: "Arrow")
+                    marker.title = bus.name
+                    marker.snippet = "Speed: \(bus.s) km/h\nid: \(bus.id)"
+                    marker.map = mapView
+                    markers[bus.id] = marker
+                }
+            }
+//            markers.forEach { id, marker in
+//                if !updatedIds.contains(id) {
+//                    marker.map = nil
+//                }
 //            }
         }
-        drawBusStops(busRoute.busStops)
+        
+        if isWithBusStops {
+            drawBusStops(busRoute.busStops)
+        }
     }
     
-    private func drawAllRoutes() {
+    private func drawAllRoutes(isWithBusStops: Bool = false) {
         DataManager.shared.simpleBusRoutes.forEach { busRoute in
-            drawRoute(routeNumber: busRoute.number)
+            drawRoute(routeNumber: busRoute.number, isWithBusStops: isWithBusStops)
         }
     }
     
@@ -145,16 +161,24 @@ class MapViewController: MainTabViewController {
         DataManager.shared.simpleBusRoutes.enumerated().forEach { index, route in
 //                    guard index == 0 else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) - 0.5) { [weak self] in
-                self?.getLiveBusRoute(with: route.id) { [weak self] busRoute, error in
-                    if var busRoute = busRoute {
-                        busRoute.routeId = route.id
-                        self?.drawRoute(from: busRoute)
-                    } else if let error = error {
-                        print(error)
-                    }
+                self?.drawLiveRoute(routeId: route.id)
+            }
+        }
+    }
+    
+    func drawLiveRoute(routeId: String) {
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            self.getLiveBusRoute(with: routeId) { [weak self] busRoute, error in
+                if var busRoute = busRoute {
+                    busRoute.routeId = routeId
+                    self?.drawRoute(from: busRoute, isWithBusStops: false)
+                } else if let error = error {
+                    print(error)
                 }
             }
         }
+        timer.fire()
     }
     
     // MARK: Network
