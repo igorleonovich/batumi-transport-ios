@@ -22,6 +22,20 @@ struct BusStop: Codable {
     let stop_id: String
 }
 
+extension BusStop: Equatable {
+    
+    static func == (lhs: BusStop, rhs: BusStop) -> Bool {
+        return lhs.stop_id == rhs.stop_id
+    }
+}
+
+extension BusStop: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(stop_id)
+    }
+}
+
 struct BusStopOutput: Codable {
     
 }
