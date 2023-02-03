@@ -90,6 +90,7 @@ class MapViewController: MainTabViewController {
                     CATransaction.begin()
                     CATransaction.setAnimationDuration(2)
                     markerObject.value.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
+                    markerObject.value.rotation = CLLocationDegrees(bus.c)
                     if let selectedMarker = mapView.selectedMarker, selectedMarker == markers[bus.id] {
                         mapView.animate(toLocation: markerObject.value.position)
                     }
@@ -101,7 +102,10 @@ class MapViewController: MainTabViewController {
                     marker.zIndex = 1000
                     marker.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
                     marker.icon = UIImage(named: "Arrow")
-                    marker.title = bus.name
+                    if let number = DataManager.shared.simpleBusRoutes.first(where: { $0.id == busRoute.routeId })?.number {
+                        marker.title = number
+                    }
+                    marker.snippet = bus.name
 //                    marker.snippet = "Speed: \(bus.s) km/h"
                     marker.map = mapView
                     markers[bus.id] = marker
