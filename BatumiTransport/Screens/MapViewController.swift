@@ -88,7 +88,7 @@ class MapViewController: MainTabViewController {
             buses.forEach { bus in
                 if let markerObject = markers.first(where: { $0.key == bus.id }) {
                     CATransaction.begin()
-                    CATransaction.setAnimationDuration(5)
+                    CATransaction.setAnimationDuration(2)
                     markerObject.value.position = CLLocationCoordinate2D(latitude: bus.lat, longitude: bus.lon)
                     if let selectedMarker = mapView.selectedMarker, selectedMarker == markers[bus.id] {
                         mapView.animate(toLocation: markerObject.value.position)
