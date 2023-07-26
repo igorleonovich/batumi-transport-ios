@@ -8,7 +8,7 @@
 import GoogleMaps
 import UIKit
 
-class MapViewController: MainTabViewController {
+final class MapViewController: MainTabViewController {
     
     private var routeDataTask: URLSessionTask?
     private lazy var sessionConfiguration: URLSessionConfiguration = {
@@ -215,9 +215,12 @@ class MapViewController: MainTabViewController {
                 } else if let data = data, let response = response as? HTTPURLResponse {
                     print(response.statusCode)
                     if response.statusCode == 200 {
-                        let busRoute = try! JSONDecoder().decode(BusRoute.self, from: data)
-                        self.liveRoutes.insert(busRoute)
-                        completion(busRoute, nil)
+                        if let busRoute = try? JSONDecoder().decode(BusRoute.self, from: data) {
+                            self.liveRoutes.insert(busRoute)
+                            completion(busRoute, nil)
+                        } else {
+                            completion(nil, error)
+                        }
                     } else if let error = error {
                         completion(nil, error)
                     }

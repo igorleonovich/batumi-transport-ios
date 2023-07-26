@@ -11,7 +11,7 @@ final class MainViewController: UIViewController {
     
     private var viewControllers = [MainTabViewController]()
     var mapViewController: MapViewController!
-    private let bottomPanel = BlurView()
+    private var bottomPanel: BlurView!
     static let bottomPanelHeight: CGFloat = 44
     private var mapStackView: InnerStackView!
     private var busListStackView: InnerStackView!
@@ -24,6 +24,11 @@ final class MainViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        super.loadView()
+        bottomPanel = BlurView()
     }
     
     override func viewDidLoad() {

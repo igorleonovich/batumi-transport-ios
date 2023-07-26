@@ -9,8 +9,8 @@ import UIKit
 
 class MainTabViewController: UIViewController {
     
-    let topStackView = UIStackView()
-    let titleLabel = UILabel()
+    private var topStackView: UIStackView!
+    private var titleLabel: UILabel!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -28,6 +28,7 @@ class MainTabViewController: UIViewController {
     // MARK: - Setup
     
     private func setupTopStackView() {
+        topStackView = UIStackView()
         view.addSubview(topStackView)
         topStackView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(25)
@@ -41,6 +42,7 @@ class MainTabViewController: UIViewController {
     }
     
     func setupTitle() {
+        titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 26)
         titleLabel.textColor = .white
         topStackView.addArrangedSubview(titleLabel)
