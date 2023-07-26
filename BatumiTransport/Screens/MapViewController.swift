@@ -23,7 +23,8 @@ final class MapViewController: MainTabViewController {
     private var initialCoordinates: CLLocationCoordinate2D? {
         didSet {
             guard let initialCoordinates = initialCoordinates else { return }
-            let camera = GMSCameraPosition.camera(withLatitude: initialCoordinates.latitude, longitude: initialCoordinates.longitude, zoom: 14)
+            let camera = GMSCameraPosition.camera(withLatitude: initialCoordinates.latitude,
+                                                  longitude: initialCoordinates.longitude, zoom: 14)
             mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
             mapView.delegate = self
             view.addSubview(mapView)

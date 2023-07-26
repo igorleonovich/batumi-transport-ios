@@ -49,7 +49,8 @@ extension UIViewController {
     
     static weak var currentAlertController: UIAlertController?
     
-    static func alertController(title: String?, message: String?, style preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction] = []) -> UIViewController {
+    static func alertController(title: String?, message: String?, style preferredStyle: UIAlertController.Style = .alert,
+                                actions: [UIAlertAction] = []) -> UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         if actions.isEmpty {
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
