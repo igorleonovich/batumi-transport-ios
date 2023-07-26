@@ -13,7 +13,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyAriwMRRbArlEZ0Lwxxxf74uPHI9WXiDOQ")
+        GMSServices.provideAPIKey("API_KEY")
         GMSServices.setMetalRendererEnabled(true)
         return true
     }
